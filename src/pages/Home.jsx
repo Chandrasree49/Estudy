@@ -1,9 +1,8 @@
-import { Slider } from "../component/Slider.jsx";
-
+import Banner from "../component/Banner";
 const Home = () => {
   return (
     <div>
-        <Slider></Slider>
+        <Banner></Banner>
     </div>
   )
 }

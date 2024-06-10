@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { useParams } from "react-router-dom"; // Assuming you're using react-router for routing
+import { useParams } from "react-router-dom"; 
 import { BASE_URL } from "./apiEndPoints";
 import PaymentForm from "./PaymentForm";
 
@@ -8,7 +8,7 @@ const StudySessionDetail = () => {
   const { id } = useParams();
   const [session, setSession] = useState(null);
   const [showPaymentForm, setShowPaymentForm] = useState(false);
-  const [user, setUser] = useState(null); // Assume user info is stored in local storage or fetched from an API
+  const [user, setUser] = useState(null); 
 
   useEffect(() => {
     const fetchSession = async () => {
@@ -21,7 +21,7 @@ const StudySessionDetail = () => {
     };
 
     const fetchUser = () => {
-      const role = localStorage.getItem("role"); // Assuming user info is stored in local storage
+      const role = localStorage.getItem("role"); 
       setUser(role);
     };
 

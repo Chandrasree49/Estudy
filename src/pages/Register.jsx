@@ -10,7 +10,7 @@ const Register = () => {
     name: "",
     email: "",
     password: "",
-    role: "student", // Default role selection
+    role: "student", 
   };
 
   const [formData, setFormData] = useState(initialFormData);
@@ -28,7 +28,7 @@ const Register = () => {
     try {
       const response = await axios.post(`${BASE_URL}/register`, formData);
       toast.success(response.data);
-      setFormData(initialFormData); // Reset the form
+      setFormData(initialFormData); 
     } catch (error) {
       toast.success("Registration failed. Please try again later.");
     }

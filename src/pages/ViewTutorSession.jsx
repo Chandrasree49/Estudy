@@ -43,6 +43,14 @@ const ViewTutorSession = () => {
           },
         }
       );
+      alert("Approval request sent successfully");
+      setSessions((prevSessions) =>
+        prevSessions.map((session) =>
+          session._id === sessionId
+            ? { ...session, status: "pending" }
+            : session
+        )
+      );
       
     } catch (err) {
       console.error("Error sending approval request", err);

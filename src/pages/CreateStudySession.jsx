@@ -45,7 +45,7 @@ const CreateStudySession = () => {
         {
           headers: {
             "Content-Type": "application/json",
-            Authorization: `Bearer ${accessToken}`, // Assuming you are using a token for auth
+            Authorization: `Bearer ${accessToken}`, 
           },
         }
       );

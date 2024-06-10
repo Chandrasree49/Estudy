@@ -70,7 +70,7 @@ const Notes = () => {
             value={newNote.email}
             readOnly
             className="mt-1 p-2 w-full border border-gray-300 rounded-md"
-            // Assuming email is obtained from authentication
+            
           />
         </div>
         <div className="mb-4">

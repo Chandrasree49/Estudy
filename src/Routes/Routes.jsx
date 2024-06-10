@@ -11,6 +11,10 @@ import ViewTutorSession from "../pages/ViewTutorSession";
 import ViewTutorMaterials from "../pages/ViewTutorMaterials";
 import Notes from "../pages/Notes";
 import StudySessions from "../pages/StudySessions";
+import StudySessionDetail from "../pages/StudySessionDetail";
+import Tutors from "../pages/Tutors";
+import BookedSession from "../pages/BookedSession";
+import ViewSessionDetail from "../pages/ViewSessionDetail";
 
 export const router = createBrowserRouter([
   {
@@ -56,6 +60,22 @@ export const router = createBrowserRouter([
       {
         path: "/StudySessions",
         element: <StudySessions></StudySessions>,
+      },
+      {
+        path: "/study-sessionsdetails/:id",
+        element: <StudySessionDetail></StudySessionDetail>,
+      },
+      {
+        path: "/tutors",
+        element: <Tutors></Tutors>,
+      },
+      {
+        path: "/booked-sessions",
+        element: <BookedSession></BookedSession>,
+      },
+      {
+        path: "/view-session/:sessionId",
+        element: <ViewSessionDetail></ViewSessionDetail>,
       },
     ],
   },

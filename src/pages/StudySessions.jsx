@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { BASE_URL } from "./apiEndPoints";
+import { Link } from "react-router-dom";
 
 const StudySessions = () => {
   const [sessions, setSessions] = useState([]);
@@ -37,9 +38,11 @@ const StudySessions = () => {
             >
               {session.registrationEndDate < Date.now() ? "Closed" : "Ongoing"}
             </button>
-            <button className="px-4 py-2 bg-blue-500 text-white rounded-md mr-2">
-              Read More
-            </button>
+            <Link to={`/study-sessionsdetails/${session._id}`}>
+              <button className="px-4 py-2 bg-blue-500 text-white rounded-md mr-2">
+                Read More
+              </button>
+            </Link>
           </div>
         ))}
       </div>

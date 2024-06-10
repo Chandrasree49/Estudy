@@ -6,7 +6,7 @@ const ViewAllUsers = () => {
   const [users, setUsers] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [filteredUsers, setFilteredUsers] = useState([]);
-  const [newRoles, setNewRoles] = useState({}); // State to store the selected new role for each user
+  const [newRoles, setNewRoles] = useState({}); 
 
   useEffect(() => {
     const fetchUsers = async () => {
@@ -43,14 +43,14 @@ const ViewAllUsers = () => {
       const accessToken = localStorage.getItem("accessToken");
       await axios.put(
         `${BASE_URL}/users/${userId}/update-role`,
-        { newRole: newRoles[userId] }, // Send the selected new role to the backend
+        { newRole: newRoles[userId] }, 
         {
           headers: {
             Authorization: `Bearer ${accessToken}`,
           },
         }
       );
-      // Refresh the user list after updating the role
+      
       const response = await axios.get(`${BASE_URL}/users-all`, {
         headers: {
           Authorization: `Bearer ${accessToken}`,
@@ -74,18 +74,18 @@ const ViewAllUsers = () => {
         className="border border-gray-300 rounded-md px-4 py-2 mb-4 w-full"
       />
       <table className="min-w-full divide-y divide-gray-200">
-        {/* Table headers */}
+      
         <tbody className="bg-white divide-y divide-gray-200">
           {filteredUsers.map((user) => (
             <tr key={user._id}>
-              {/* Display user details */}
+             
               <td className="px-6 py-4 whitespace-no-wrap">{user.name}</td>
               <td className="px-6 py-4 whitespace-no-wrap">{user.email}</td>
               <td className="px-6 py-4 whitespace-no-wrap">{user.role}</td>
               <td className="px-6 py-4 whitespace-no-wrap">
-                {/* Dropdown menu to select new role */}
+               
                 <select
-                  value={newRoles[user._id] || user.role} // Set dropdown value to user's role or selected new role
+                  value={newRoles[user._id] || user.role} 
                   onChange={(e) =>
                     setNewRoles({
                       ...newRoles,
@@ -101,11 +101,11 @@ const ViewAllUsers = () => {
                 </select>
               </td>
               <td className="px-6 py-4 whitespace-no-wrap">
-                {/* Button to update user role */}
+                
                 <button
                   onClick={() => handleUpdateRole(user._id)}
                   className="text-indigo-600 hover:text-indigo-900"
-                  disabled={!newRoles[user._id]} // Disable button if newRole is not selected
+                  disabled={!newRoles[user._id]} 
                 >
                   Update Role
                 </button>

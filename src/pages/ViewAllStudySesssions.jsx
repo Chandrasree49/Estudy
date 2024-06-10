@@ -143,13 +143,13 @@ const ViewAllStudySessions = () => {
           },
         }
       );
-      // Refresh study sessions list after deleting
+    
       const response = await axios.get(`${BASE_URL}/study-sessions`, {
         headers: {
           Authorization: `Bearer ${accessToken}`,
         },
       });
-      // Filter out rejected sessions
+    
       const filteredSessions = response.data.filter(
         (session) => session.status !== "rejected"
       );

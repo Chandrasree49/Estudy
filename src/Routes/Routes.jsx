@@ -15,6 +15,9 @@ import StudySessionDetail from "../pages/StudySessionDetail";
 import Tutors from "../pages/Tutors";
 import BookedSession from "../pages/BookedSession";
 import ViewSessionDetail from "../pages/ViewSessionDetail";
+import AllNotes from "../pages/AllNotes";
+import Dashboard from "../pages/Dashboard";
+import ViewTutorApprovedSessions from "../pages/ViewTutorApprovedSessions";
 
 export const router = createBrowserRouter([
   {
@@ -24,6 +27,10 @@ export const router = createBrowserRouter([
       {
         path: "/",
         element: <Home></Home>,
+      },
+      {
+        path: "/dashboard",
+        element: <Dashboard></Dashboard>,
       },
       {
         path: "/register",
@@ -50,6 +57,10 @@ export const router = createBrowserRouter([
         element: <ViewTutorSession></ViewTutorSession>,
       },
       {
+        path: "/ViewApprovedSession",
+        element: <ViewTutorApprovedSessions></ViewTutorApprovedSessions>,
+      },
+      {
         path: "/ViewTutorMaterials",
         element: <ViewTutorMaterials></ViewTutorMaterials>,
       },
@@ -57,6 +68,11 @@ export const router = createBrowserRouter([
         path: "/Notes",
         element: <Notes></Notes>,
       },
+      {
+        path: "/AllNotes",
+        element: <AllNotes></AllNotes>,
+      },
+
       {
         path: "/StudySessions",
         element: <StudySessions></StudySessions>,

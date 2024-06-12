@@ -61,13 +61,21 @@ const Nav = () => {
     navOptions = (
       <>
         <li>
-          <a href="/tutor/courses">My Courses</a>
+          <a href="/CreateStudySession">Create study Session</a>
         </li>
         <li>
-          <a href="/tutor/schedule">Schedule</a>
+          <a href="/ViewTutorSession">View Session</a>
         </li>
         <li>
-          <a href="/tutor/resources">Resources</a>
+          <a href="/ViewTutorMaterials">Tutor Materials</a>
+        </li>
+
+        <li>
+          <a href="/ViewTutorMaterials">Upload Materials</a>
+        </li>
+
+        <li>
+          <a href="/Allnotes">View Notes</a>
         </li>
       </>
     );
@@ -118,7 +126,6 @@ const Nav = () => {
             </ul>
           </div>
           <img src={logo} height="50px" width="50px"></img>
-          <a className="btn btn-ghost text-xl">ESTUDY</a>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">{navOptions}</ul>

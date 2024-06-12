@@ -10,7 +10,7 @@ const CreateStudySession = () => {
     token: "",
   });
 
-  const [formData, setFormData] = useState({
+  const initialFormData = {
     sessionTitle: "",
     sessionDescription: "",
     registrationStartDate: "",
@@ -19,7 +19,9 @@ const CreateStudySession = () => {
     classEndDate: "",
     sessionDuration: "",
     status: "pending",
-  });
+  };
+
+  const [formData, setFormData] = useState(initialFormData);
 
   useEffect(() => {
     const storedUser = {
@@ -45,11 +47,12 @@ const CreateStudySession = () => {
         {
           headers: {
             "Content-Type": "application/json",
-            Authorization: `Bearer ${accessToken}`, 
+            Authorization: `Bearer ${accessToken}`,
           },
         }
       );
       toast.success("Study session created successfully");
+      setFormData(initialFormData);
       console.log(response.data);
     } catch (err) {
       console.error("Error creating study session", err);

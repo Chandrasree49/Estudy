@@ -71,17 +71,20 @@ const Nav = () => {
         </li>
       </>
     );
-  } else if (role === "user") {
+  } else if (role === "user" || role === "student") {
     navOptions = (
       <>
         <li>
-          <a href="/student/courses">Courses</a>
+          <a href="/booked-sessions">View Booked Session</a>
         </li>
         <li>
-          <a href="/student/assignments">Assignments</a>
+          <a href="/notes">Notes</a>
         </li>
         <li>
-          <a href="/student/grades">Grades</a>
+          <a href="/notes">Manage Notes</a>
+        </li>
+        <li>
+          <a href="/notes">Tutor Study Materials</a>
         </li>
       </>
     );

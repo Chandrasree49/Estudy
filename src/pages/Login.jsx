@@ -59,9 +59,9 @@ const Login = () => {
         window.location.href = "/dashboard";
       })
       .catch((error) => {
-        // Handle error
+       
         console.error("Error signing in:", error);
-        // You can display an error message to the user or take other actions
+        
       });
   };
 
@@ -138,7 +138,17 @@ const Login = () => {
             style={{ marginLeft: "15px" }}
             disabled={loading}
           >
-            {loading ? "Logging in..." : "Google Login"}
+            { "Google Login"}
+          </button>
+
+          <button
+            className="bg-orange-500 text-white px-4 py-2 rounded hover:bg-orange-600 focus:outline-none"
+            type="button"
+            onClick={handleGoogleLogin}
+            style={{ marginLeft: "15px" }}
+            disabled={loading}
+          >
+            {"Github Login"}
           </button>
 
           {error && <p className="text-red-500 mt-4">{error}</p>}

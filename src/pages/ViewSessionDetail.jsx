@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { useParams } from "react-router-dom"; // Assuming you're using react-router for routing
+import { useParams } from "react-router-dom";
 import { BASE_URL } from "./apiEndPoints";
 
 const ViewSessionDetail = () => {

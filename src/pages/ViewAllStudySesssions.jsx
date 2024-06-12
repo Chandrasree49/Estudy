@@ -27,7 +27,7 @@ const ViewAllStudySessions = () => {
             Authorization: `Bearer ${accessToken}`,
           },
         });
-        // Filter out rejected sessions
+       
         const filteredSessions = response.data.filter(
           (session) => session.status !== "rejected"
         );
@@ -55,13 +55,13 @@ const ViewAllStudySessions = () => {
           },
         }
       );
-      // Refresh study sessions list after approving
+      
       const response = await axios.get(`${BASE_URL}/study-sessions`, {
         headers: {
           Authorization: `Bearer ${accessToken}`,
         },
       });
-      // Filter out rejected sessions
+      
       const filteredSessions = response.data.filter(
         (session) => session.status !== "rejected"
       );
@@ -85,13 +85,13 @@ const ViewAllStudySessions = () => {
           },
         }
       );
-      // Refresh study sessions list after approving
+      
       const response = await axios.get(`${BASE_URL}/study-sessions`, {
         headers: {
           Authorization: `Bearer ${accessToken}`,
         },
       });
-      // Filter out rejected sessions
+    
       const filteredSessions = response.data.filter(
         (session) => session.status !== "rejected"
       );
@@ -114,15 +114,15 @@ const ViewAllStudySessions = () => {
           },
         }
       );
-      // Close the modal after updating
+      
       setIsUpdateModalOpen(false);
-      // Refresh study sessions list after updating
+      
       const response = await axios.get(`${BASE_URL}/study-sessions`, {
         headers: {
           Authorization: `Bearer ${accessToken}`,
         },
       });
-      // Filter out rejected sessions
+      
       const filteredSessions = response.data.filter(
         (session) => session.status !== "rejected"
       );

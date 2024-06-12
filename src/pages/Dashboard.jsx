@@ -5,7 +5,7 @@ const Dashboard = () => {
   const [role, setRole] = useState("");
 
   useEffect(() => {
-    const role = checkAuth(); // Assuming this function returns a role
+    const role = checkAuth(); 
     setRole(role);
   }, []);
 

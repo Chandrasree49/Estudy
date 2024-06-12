@@ -17,7 +17,7 @@ const ViewAllUsers = () => {
       localStorage.removeItem("email");
       localStorage.removeItem("role");
 
-      // Redirect to login page
+      
       window.location.href = "/login";
     }
     const fetchUsers = async () => {

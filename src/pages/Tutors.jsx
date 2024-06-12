@@ -34,7 +34,7 @@ const Tutors = () => {
           >
             <h2 className="text-xl font-semibold mb-2">{tutor.name}</h2>
             <p className="text-gray-700 mb-2">{tutor.email}</p>
-            {/* Add other details you want to display */}
+           
           </div>
         ))}
       </div>

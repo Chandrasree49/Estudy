@@ -143,13 +143,13 @@ const ViewAllStudySessions = () => {
           },
         }
       );
-    
+
       const response = await axios.get(`${BASE_URL}/study-sessions`, {
         headers: {
           Authorization: `Bearer ${accessToken}`,
         },
       });
-    
+
       const filteredSessions = response.data.filter(
         (session) => session.status !== "rejected"
       );

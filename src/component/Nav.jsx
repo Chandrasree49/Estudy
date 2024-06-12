@@ -47,13 +47,13 @@ const Nav = () => {
     navOptions = (
       <>
         <li>
-          <a href="/admin/dashboard">Dashboard</a>
+          <a href="/viewallusers">Users</a>
         </li>
         <li>
-          <a href="/admin/users">Manage Users</a>
+          <a href="/viewallsession">Manage Sessions</a>
         </li>
         <li>
-          <a href="/admin/settings">Settings</a>
+          <a href="ViewTutorMaterials">View Tutor Materials</a>
         </li>
       </>
     );

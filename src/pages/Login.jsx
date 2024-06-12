@@ -4,9 +4,36 @@ import axios from "axios";
 import { BASE_URL } from "./apiEndPoints";
 import { useNavigate, NavLink } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
+import {
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  GoogleAuthProvider,
+  signInWithPopup,
+  GithubAuthProvider,
+  updateProfile,
+  onAuthStateChanged,
+} from "firebase/auth";
+import { initializeApp } from "firebase/app";
+
+import { getAuth } from "firebase/auth";
 
 const Login = () => {
   const navigateTo = useNavigate();
+
+  const googleProvider = new GoogleAuthProvider();
+
+  const gitProvider = new GithubAuthProvider();
+  const firebaseConfig = {
+    apiKey: "AIzaSyD0We0u9C9tLyMijgiigjCZv-y0dhZ6Fio",
+    authDomain: "assignment-11-c1edb.firebaseapp.com",
+    projectId: "assignment-11-c1edb",
+    storageBucket: "assignment-11-c1edb.appspot.com",
+    messagingSenderId: "548904369252",
+    appId: "1:548904369252:web:ac93a26b616f4b32f83371",
+  };
+  const app = initializeApp(firebaseConfig);
+
+  const auth = getAuth(app);
 
   const [formData, setFormData] = useState({
     email: "",
@@ -17,6 +44,25 @@ const Login = () => {
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleGoogleLogin = async () => {
+    signInWithPopup(auth, googleProvider)
+      .then((result) => {
+        console.log("User signed in successfully:", result);
+        localStorage.setItem("accessToken", result.user.accessToken);
+        localStorage.setItem("name", result.user.displayName);
+        localStorage.setItem("email", result.user.email);
+        localStorage.setItem("role", "user");
+
+        toast.success("Logged in Successfully");
+        window.location.href = "/dashboard";
+      })
+      .catch((error) => {
+        // Handle error
+        console.error("Error signing in:", error);
+        // You can display an error message to the user or take other actions
+      });
   };
 
   const handleSubmit = async (e) => {
@@ -31,8 +77,7 @@ const Login = () => {
       localStorage.setItem("name", user.name);
       localStorage.setItem("email", user.email);
       localStorage.setItem("role", user.role);
-      // setUser(user);
-      // Redirect to dashboard or any other route after successful login
+
       toast.success("Logged in Successfully");
       window.location.href = "/dashboard";
     } catch (error) {
@@ -85,6 +130,15 @@ const Login = () => {
             disabled={loading}
           >
             {loading ? "Logging in..." : "Login"}
+          </button>
+          <button
+            className="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600 focus:outline-none"
+            type="button"
+            onClick={handleGoogleLogin}
+            style={{ marginLeft: "15px" }}
+            disabled={loading}
+          >
+            {loading ? "Logging in..." : "Google Login"}
           </button>
 
           {error && <p className="text-red-500 mt-4">{error}</p>}

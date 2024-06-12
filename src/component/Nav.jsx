@@ -86,13 +86,13 @@ const Nav = () => {
           <a href="/booked-sessions">View Booked Session</a>
         </li>
         <li>
-          <a href="/notes">Notes</a>
+          <a href="/allnotes">Notes</a>
         </li>
         <li>
           <a href="/notes">Manage Notes</a>
         </li>
         <li>
-          <a href="/notes">Tutor Study Materials</a>
+          <a href="/usermaterials"> Study Materials</a>
         </li>
       </>
     );

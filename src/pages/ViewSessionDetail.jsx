@@ -47,9 +47,7 @@ const ViewSessionDetail = () => {
           },
         }
       );
-      // Optionally, you can reload the session details after adding the review
-
-      // Clear review input fields
+      
       setReview("");
       setRating(0);
       alert("Review addedd successfully");

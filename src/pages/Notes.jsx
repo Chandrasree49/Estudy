@@ -59,7 +59,7 @@ const Notes = () => {
   };
 
   return (
-    <div className="container mx-auto px-4 py-8">
+    <div className="container mx-auto px-4 py-8 max-w-lg">
       <h1 className="text-3xl font-bold mb-4">Notes</h1>
       <form onSubmit={handleSubmit} className="mb-4">
         <div className="mb-4">
@@ -70,7 +70,6 @@ const Notes = () => {
             value={newNote.email}
             readOnly
             className="mt-1 p-2 w-full border border-gray-300 rounded-md"
-            
           />
         </div>
         <div className="mb-4">

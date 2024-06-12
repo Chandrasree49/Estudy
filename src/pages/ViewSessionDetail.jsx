@@ -48,10 +48,25 @@ const ViewSessionDetail = () => {
         }
       );
       // Optionally, you can reload the session details after adding the review
-      fetchSession();
+
       // Clear review input fields
       setReview("");
       setRating(0);
+      alert("Review addedd successfully");
+      try {
+        const accessToken = localStorage.getItem("accessToken");
+        const response = await axios.get(
+          `${BASE_URL}/booked-sessions/${sessionId}`,
+          {
+            headers: {
+              Authorization: `Bearer ${accessToken}`,
+            },
+          }
+        );
+        setSession(response.data);
+      } catch (error) {
+        console.error("Error fetching session details:", error);
+      }
     } catch (error) {
       console.error("Error submitting review:", error);
     }
@@ -116,6 +131,43 @@ const ViewSessionDetail = () => {
       )}
 
       <h2 className="text-xl font-semibold mt-8 mb-4">Reviews</h2>
+      <div className="max-w-2xl mx-auto mt-8">
+        {session.ratings.map((rating, index) => (
+          <div key={index} className="bg-white shadow-md rounded-lg p-6 mb-6">
+            <h2 className="text-lg font-semibold text-gray-800 mb-2">
+              {rating.studentEmail}
+            </h2>
+            <p className="text-gray-600 mb-4">{rating.review}</p>
+            <div className="flex items-center">
+              <span className="text-yellow-500 text-xl font-bold mr-2">
+                {rating.rating}
+              </span>
+              <div className="flex">
+                {Array.from({ length: rating.rating }, (_, i) => (
+                  <svg
+                    key={i}
+                    className="w-5 h-5 text-yellow-500"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                  >
+                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.286 3.957a1 1 0 00.95.69h4.15c.969 0 1.371 1.24.588 1.81l-3.357 2.44a1 1 0 00-.364 1.118l1.287 3.957c.3.921-.755 1.688-1.539 1.118l-3.357-2.44a1 1 0 00-1.175 0l-3.357 2.44c-.784.57-1.839-.197-1.539-1.118l1.287-3.957a1 1 0 00-.364-1.118L2.175 9.384c-.783-.57-.38-1.81.588-1.81h4.15a1 1 0 00.95-.69l1.286-3.957z" />
+                  </svg>
+                ))}
+                {Array.from({ length: 5 - rating.rating }, (_, i) => (
+                  <svg
+                    key={i}
+                    className="w-5 h-5 text-gray-300"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                  >
+                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.286 3.957a1 1 0 00.95.69h4.15c.969 0 1.371 1.24.588 1.81l-3.357 2.44a1 1 0 00-.364 1.118l1.287 3.957c.3.921-.755 1.688-1.539 1.118l-3.357-2.44a1 1 0 00-1.175 0l-3.357 2.44c-.784.57-1.839-.197-1.539-1.118l1.287-3.957a1 1 0 00-.364-1.118L2.175 9.384c-.783-.57-.38-1.81.588-1.81h4.15a1 1 0 00.95-.69l1.286-3.957z" />
+                  </svg>
+                ))}
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
 
       <h2 className="text-xl font-semibold mt-8 mb-4">Add Review</h2>
       <form onSubmit={handleSubmitReview}>

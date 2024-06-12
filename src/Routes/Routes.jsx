@@ -18,6 +18,7 @@ import ViewSessionDetail from "../pages/ViewSessionDetail";
 import AllNotes from "../pages/AllNotes";
 import Dashboard from "../pages/Dashboard";
 import ViewTutorApprovedSessions from "../pages/ViewTutorApprovedSessions";
+import Usermaterials from "../pages/Usermaterials";
 
 export const router = createBrowserRouter([
   {
@@ -92,6 +93,10 @@ export const router = createBrowserRouter([
       {
         path: "/view-session/:sessionId",
         element: <ViewSessionDetail></ViewSessionDetail>,
+      },
+      {
+        path: "/userMaterials",
+        element: <Usermaterials></Usermaterials>,
       },
     ],
   },

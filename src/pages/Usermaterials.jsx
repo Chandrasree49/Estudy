@@ -16,7 +16,7 @@ const Usermaterials = () => {
             Authorization: `Bearer ${accessToken}`,
           },
         });
-        setBookedSessions(response.data);
+        setBookedSessions(response);
       } catch (error) {
         console.error("Error fetching booked sessions:", error);
       }

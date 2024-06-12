@@ -34,7 +34,7 @@ const Login = () => {
       // setUser(user);
       // Redirect to dashboard or any other route after successful login
       toast.success("Logged in Successfully");
-      navigateTo("/dashboard");
+      window.location.href = "/dashboard";
     } catch (error) {
       toast.error("Invalid email or password");
     }

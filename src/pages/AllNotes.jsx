@@ -20,25 +20,32 @@ const AllNotes = () => {
 
   return (
     <div className="container mx-auto px-4 py-8">
-      <h1 className="text-3xl font-bold mb-4">All Notes</h1>
-      <table className="w-full border-collapse border border-gray-300">
-        <thead>
-          <tr className="bg-gray-100">
-            <th className="p-3">Email</th>
-            <th className="p-3">Title</th>
-            <th className="p-3">Description</th>
-          </tr>
-        </thead>
-        <tbody>
-          {notes.map((note) => (
-            <tr key={note._id}>
-              <td className="p-3">{note.email}</td>
-              <td className="p-3">{note.title}</td>
-              <td className="p-3">{note.description}</td>
+      <h1 className="text-3xl font-bold mb-6 text-center text-gray-800">
+        All Notes
+      </h1>
+      <div className="overflow-x-auto">
+        <table className="min-w-full bg-white border border-gray-300 rounded-lg shadow-md">
+          <thead className="bg-gray-200 text-gray-700">
+            <tr>
+              <th className="py-3 px-6 text-left">Email</th>
+              <th className="py-3 px-6 text-left">Title</th>
+              <th className="py-3 px-6 text-left">Description</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody className="text-gray-600">
+            {notes.map((note) => (
+              <tr
+                key={note._id}
+                className="border-t border-gray-200 hover:bg-gray-100 transition duration-300"
+              >
+                <td className="py-3 px-6">{note.email}</td>
+                <td className="py-3 px-6">{note.title}</td>
+                <td className="py-3 px-6">{note.description}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 };

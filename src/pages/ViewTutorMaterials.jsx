@@ -52,6 +52,11 @@ const ViewTutorMaterials = () => {
           },
         }
       );
+      setMaterials((prevMaterials) =>
+        prevMaterials.map((material) =>
+          material._id === editingMaterial._id ? editingMaterial : material
+        )
+      );
       closeModal();
     } catch (error) {
       console.error("Error updating material", error);
@@ -73,59 +78,84 @@ const ViewTutorMaterials = () => {
   };
 
   return (
-    <div className="container mx-auto">
-      <h1 className="text-2xl font-bold mb-4">My Materials</h1>
-      <table className="min-w-full divide-y divide-gray-200">
-        <thead className="bg-gray-50">
-          <tr>
-            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-              Title
-            </th>
-            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-              Link
-            </th>
-            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-              Actions
-            </th>
-          </tr>
-        </thead>
-        <tbody className="bg-white divide-y divide-gray-200">
-          {materials.map((material) => (
-            <tr key={material._id}>
-              <td className="px-6 py-4 whitespace-nowrap">{material.title}</td>
-              <td className="px-6 py-4 whitespace-nowrap">
-                <a
-                  href={material.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-blue-500"
-                >
-                  {material.link}
-                </a>
-              </td>
-              <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                <button
-                  onClick={() => openModal(material)}
-                  className="text-indigo-600 hover:text-indigo-900"
-                >
-                  Edit
-                </button>
-                <button
-                  onClick={() => handleDelete(material._id)}
-                  className="ml-2 text-red-600 hover:text-red-900"
-                >
-                  Delete
-                </button>
-              </td>
+    <div className="container mx-auto px-4 py-6">
+      <h1 className="text-3xl font-bold mb-6">Tutor Materials</h1>
+      <div className="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
+        <table className="min-w-full divide-y divide-gray-200">
+          <thead className="bg-gray-50">
+            <tr>
+              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                Title
+              </th>
+              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                Link
+              </th>
+              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                Actions
+              </th>
             </tr>
-          ))}
-        </tbody>
-      </table>
-      <Modal isOpen={isModalOpen} onRequestClose={closeModal}>
-        <h2>Edit Material</h2>
+          </thead>
+          <tbody className="bg-white divide-y divide-gray-200">
+            {materials.map((material) => (
+              <tr key={material._id}>
+                <td className="px-6 py-4 whitespace-nowrap">
+                  {material.title}
+                </td>
+                <td className="px-6 py-4 whitespace-nowrap">
+                  <a
+                    href={material.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-blue-500 hover:text-blue-700"
+                  >
+                    {material.link}
+                  </a>
+                </td>
+                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                  <button
+                    onClick={() => openModal(material)}
+                    className="text-indigo-600 hover:text-indigo-900 mr-4"
+                  >
+                    Edit
+                  </button>
+                  <button
+                    onClick={() => handleDelete(material._id)}
+                    className="text-red-600 hover:text-red-900"
+                  >
+                    Delete
+                  </button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <Modal
+        isOpen={isModalOpen}
+        onRequestClose={closeModal}
+        style={{
+          overlay: {
+            backgroundColor: "rgba(0, 0, 0, 0.75)",
+            zIndex: 1000,
+          },
+          content: {
+            zIndex: 1001,
+            top: "50%",
+            left: "50%",
+            right: "auto",
+            bottom: "auto",
+            marginRight: "-50%",
+            transform: "translate(-50%, -50%)",
+            width: "100%",
+            maxWidth: "500px",
+            padding: "20px",
+          },
+        }}
+      >
+        <h2 className="text-2xl font-bold mb-4">Edit Material</h2>
         <input
           type="text"
-          value={editingMaterial?.title}
+          value={editingMaterial?.title || ""}
           onChange={(e) =>
             setEditingMaterial({
               ...editingMaterial,
@@ -137,7 +167,7 @@ const ViewTutorMaterials = () => {
         />
         <input
           type="text"
-          value={editingMaterial?.link}
+          value={editingMaterial?.link || ""}
           onChange={(e) =>
             setEditingMaterial({
               ...editingMaterial,
@@ -147,18 +177,20 @@ const ViewTutorMaterials = () => {
           className="my-2 p-2 block w-full border border-gray-300 rounded-md"
           placeholder="Link"
         />
-        <button
-          onClick={handleEdit}
-          className="px-4 py-2 bg-blue-500 text-white rounded-md mt-4"
-        >
-          Save
-        </button>
-        <button
-          onClick={closeModal}
-          className="px-4 py-2 bg-gray-300 text-gray-700 rounded-md ml-2 mt-4"
-        >
-          Cancel
-        </button>
+        <div className="flex justify-end mt-4">
+          <button
+            onClick={closeModal}
+            className="px-4 py-2 bg-gray-300 text-gray-700 rounded-md mr-2"
+          >
+            Cancel
+          </button>
+          <button
+            onClick={handleEdit}
+            className="px-4 py-2 bg-blue-500 text-white rounded-md"
+          >
+            Save
+          </button>
+        </div>
       </Modal>
     </div>
   );

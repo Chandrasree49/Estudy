@@ -64,14 +64,14 @@ const Nav = () => {
           <a href="/CreateStudySession">Create study Session</a>
         </li>
         <li>
-          <a href="/ViewTutorSession">View Session</a>
+          <a href="/ViewTutorSession">View Study Sessions</a>
         </li>
         <li>
-          <a href="/ViewTutorMaterials">Tutor Materials</a>
+          <a href="/ViewUploadmaterials">Upload Materials</a>
         </li>
 
         <li>
-          <a href="/ViewTutorMaterials">Upload Materials</a>
+          <a href="/ViewTutorMaterials">Tutor Materials</a>
         </li>
 
         <li>

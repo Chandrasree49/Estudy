@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { BASE_URL } from "./apiEndPoints";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const ViewTutorApprovedSessions = () => {
   const [sessions, setSessions] = useState([]);
@@ -28,6 +30,7 @@ const ViewTutorApprovedSessions = () => {
         setLoading(false);
       } catch (err) {
         console.error("Error fetching study sessions", err);
+        toast.error("Error fetching study sessions");
         setLoading(false);
       }
     };
@@ -47,7 +50,7 @@ const ViewTutorApprovedSessions = () => {
           },
         }
       );
-      alert("Approval request sent successfully");
+      toast.success("Approval request sent successfully");
       setSessions((prevSessions) =>
         prevSessions.map((session) =>
           session._id === sessionId
@@ -57,7 +60,7 @@ const ViewTutorApprovedSessions = () => {
       );
     } catch (err) {
       console.error("Error sending approval request", err);
-      alert("Failed to send approval request");
+      toast.error("Failed to send approval request");
     }
   };
 
@@ -95,20 +98,30 @@ const ViewTutorApprovedSessions = () => {
           "Content-Type": "multipart/form-data",
         },
       });
-      alert("Material uploaded successfully");
+      toast.success("Material uploaded successfully");
       closeModal();
     } catch (err) {
       console.error("Error uploading material", err);
-      alert("Failed to upload material");
+      toast.error("Failed to upload material");
     }
   };
 
   if (loading) {
-    return <div>Loading...</div>;
+    return (
+      <div className="flex items-center justify-center h-screen">
+        <div
+          className="spinner-border animate-spin inline-block w-8 h-8 border-4 rounded-full"
+          role="status"
+        >
+          <span className="visually-hidden">...</span>
+        </div>
+      </div>
+    );
   }
 
   return (
     <div className="max-w-4xl mx-auto p-6 bg-white shadow-md rounded-lg">
+      <ToastContainer />
       <h2 className="text-2xl font-bold mb-6">My Study Sessions</h2>
       {sessions.length === 0 ? (
         <div>No study sessions found.</div>

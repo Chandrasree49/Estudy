@@ -57,7 +57,7 @@ export const router = createBrowserRouter([
         element: <ViewTutorSession></ViewTutorSession>,
       },
       {
-        path: "/ViewApprovedSession",
+        path: "/ViewUploadmaterials",
         element: <ViewTutorApprovedSessions></ViewTutorApprovedSessions>,
       },
       {

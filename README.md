@@ -6,7 +6,7 @@ thn write npm run dev
 
 ## Live Website
 
-[ReadtoLive Live](https://assignment-11-c1edb.web.app)
+[ESTUDY Live](https://assignment-12-3d8b3.web.app/)
 
 ## Features
 
@@ -16,30 +16,22 @@ thn write npm run dev
 
 2. **Home page**
 
-   - Find different Book Categories,Book Ratings and Book Review.
+   - Find different Sessions Details,Sessions Ratings and Sessions Review,.
 
-3. **All Books**
+3. **Admin**
 
-   - User can view all the books in the site
+   - Admin can manage users ,sessions and so on
 
-4. **Add Books**
+4. **Tutor**
 
-   - User can fillup the form and add their books spot
-
-5. **Borrow Books**
-
-   - User can Borrow the books
-
-6. **Borrow Books**
-
-   - User can Return the books
+   - Tutor can create sessions and other things
 
    ## Getting Started
 
-7. Clone the repository:
+5. Clone the repository:
 
    ```bash
-   https://github.com/Porgramming-Hero-web-course/b9a11-client-side-Chandrasree49
+   https://github.com/programming-hero-web-course1/b9a12-client-side-Chandrasree49
    ```
 
 ```bash
@@ -50,7 +42,7 @@ thn write npm run dev
   npm run dev
 ```
 
-## In Pages/url.js
+## In Pages/apiEndPoints.js.js
 
 ```bash
 You can change api end point link
@@ -62,3 +54,6 @@ Used Npm packages:
 "firebase": "^10.11.0",
 "react-toastify": "^10.0.5",
 "swiper": "^11.1.1"
+"react-credit-cards-2": "^1.0.2",
+"react-dom": "^18.2.0",
+"react-modal": "^3.16.1",
